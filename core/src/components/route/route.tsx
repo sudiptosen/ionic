@@ -1,5 +1,5 @@
-import { Component, Event, Prop, Watch } from '@stencil/core';
-import { EventEmitter } from 'ionicons/dist/types/stencil.core';
+import { Component, Event, EventEmitter, Prop, Watch } from '@stencil/core';
+import { ComponentName, ComponentProps } from '../../interface';
 
 @Component({
   tag: 'ion-route'
@@ -21,13 +21,13 @@ export class Route {
    * The value of this property is not always the tagname of the component to load,
    * in ion-tabs it actually refers to the name of the `ion-tab` to select.
    */
-  @Prop() component!: string;
+  @Prop() component!: ComponentName;
 
   /**
    * A key value `{ 'red': true, 'blue': 'white'}` containing props that should be passed
    * to the defined component when rendered.
    */
-  @Prop() componentProps?: {[key: string]: any};
+  @Prop() componentProps?: ComponentProps;
 
   /**
    * Used internaly by `ion-router` to know when this route did change.

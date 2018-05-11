@@ -1,9 +1,9 @@
 import { Build, Component, Element, Event, EventEmitter, Method, Prop, Watch } from '@stencil/core';
 import { ViewLifecycle } from '../..';
 import {
-  Animation, ComponentProps, Config, FrameworkDelegate, GestureDetail, Mode,
-  NavComponent, NavOptions, NavOutlet, NavResult, QueueController, RouteID,
-  RouteWrite, RouterDirection, TransitionDoneFn, TransitionInstruction } from '../../interface';
+  Animation, ComponentName, ComponentProps, Config, FrameworkDelegate, GestureDetail,
+  Mode, NavComponent, NavOptions, NavOutlet, NavResult, QueueController,
+  RouteID, RouteWrite, RouterDirection, TransitionDoneFn, TransitionInstruction } from '../../interface';
 import { assert } from '../../utils/helpers';
 import { TransitionOptions, lifecycle, transition } from '../../utils/transition';
 import { ViewController, ViewState, convertToViews, matches } from './view-controller';
@@ -79,7 +79,12 @@ export class Nav implements NavOutlet {
   }
 
   @Method()
-  push(component: NavComponent, componentProps?: ComponentProps|null, opts?: NavOptions|null, done?: TransitionDoneFn): Promise<boolean> {
+  push<T extends NavComponent>(
+    component: T,
+    componentProps?: ComponentProps<T>|null,
+    opts?: NavOptions|null,
+    done?: TransitionDoneFn
+  ): Promise<boolean> {
     return this.queueTrns({
       insertStart: -1,
       insertViews: [{ page: component, params: componentProps }],
@@ -88,7 +93,13 @@ export class Nav implements NavOutlet {
   }
 
   @Method()
-  insert(insertIndex: number, component: NavComponent, componentProps?: ComponentProps|null, opts?: NavOptions|null, done?: TransitionDoneFn): Promise<boolean> {
+  insert<T extends NavComponent>(
+    insertIndex: number,
+    component: T,
+    componentProps?: ComponentProps<T>|null,
+    opts?: NavOptions|null,
+    done?: TransitionDoneFn
+  ): Promise<boolean> {
     return this.queueTrns({
       insertStart: insertIndex,
       insertViews: [{ page: component, params: componentProps }],
@@ -97,7 +108,12 @@ export class Nav implements NavOutlet {
   }
 
   @Method()
-  insertPages(insertIndex: number, insertComponents: NavComponent[], opts?: NavOptions|null, done?: TransitionDoneFn): Promise<boolean> {
+  insertPages(
+    insertIndex: number,
+    insertComponents: NavComponent[],
+    opts?: NavOptions|null,
+    done?: TransitionDoneFn
+  ): Promise<boolean> {
     return this.queueTrns({
       insertStart: insertIndex,
       insertViews: insertComponents,
@@ -149,7 +165,12 @@ export class Nav implements NavOutlet {
   }
 
   @Method()
-  setRoot(component: NavComponent, componentProps?: ComponentProps|null, opts?: NavOptions|null, done?: TransitionDoneFn): Promise<boolean> {
+  setRoot<T extends NavComponent>(
+    component: T,
+    componentProps?: ComponentProps<T>|null,
+    opts?: NavOptions|null,
+    done?: TransitionDoneFn
+  ): Promise<boolean> {
     return this.setPages([{ page: component, params: componentProps }], opts, done);
   }
 
@@ -172,7 +193,7 @@ export class Nav implements NavOutlet {
   }
 
   @Method()
-  setRouteId(id: string, params: any, direction: number): Promise<RouteWrite> {
+  setRouteId(id: ComponentName, params: ComponentProps, direction: number): Promise<RouteWrite> {
     const active = this.getActive();
     if (matches(active, id, params)) {
       return Promise.resolve({

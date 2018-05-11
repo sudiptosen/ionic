@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Method, Prop } from '@stencil/core';
-import { AnimationBuilder, ComponentProps, ComponentRef, Config, FrameworkDelegate, Mode, NavOutlet, RouteID, RouteWrite, RouterOutletOptions } from '../../interface';
+import { AnimationBuilder, ComponentName, ComponentProps, ComponentRef, Config, FrameworkDelegate, Mode, NavOutlet, RouteID, RouteWrite, RouterOutletOptions } from '../../interface';
 import { transition } from '../../utils';
 import { attachComponent, detachComponent } from '../../utils/framework-delegate';
 
@@ -94,7 +94,7 @@ export class RouterOutlet implements NavOutlet {
   }
 
   @Method()
-  async setRouteId(id: string, params: any, direction: number): Promise<RouteWrite> {
+  async setRouteId(id: ComponentName, params: ComponentProps, direction: number): Promise<RouteWrite> {
     const changed = await this.setRoot(id, params, {
       duration: direction === 0 ? 0 : undefined,
       direction: direction === -1 ? 'back' : 'forward',

@@ -1,3 +1,4 @@
+import { ComponentName } from '../../../interface';
 import { NavOutletElement, RouteChain, RouteID, RouterDirection } from './interface';
 
 export async function writeNavState(root: HTMLElement | undefined, chain: RouteChain, direction: RouterDirection, index: number, changed = false): Promise<boolean> {
@@ -12,7 +13,7 @@ export async function writeNavState(root: HTMLElement | undefined, chain: RouteC
     await outlet.componentOnReady();
 
     const route = chain[index];
-    const result = await outlet.setRouteId(route.id, route.params, direction);
+    const result = await outlet.setRouteId(route.id as ComponentName, route.params, direction);
 
     // if the outlet changed the page, reset navigation to neutral (no direction)
     // this means nested outlets will not animate

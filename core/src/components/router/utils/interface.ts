@@ -1,6 +1,7 @@
+import { ComponentName, ComponentProps } from '../../../interface';
 
 export interface NavOutlet {
-  setRouteId(id: string, data: any, direction: number): Promise<RouteWrite>;
+  setRouteId(id: ComponentName, params: ComponentProps, direction: number): Promise<RouteWrite>;
   getRouteId(): RouteID|undefined;
 }
 

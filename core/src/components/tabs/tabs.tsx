@@ -1,5 +1,5 @@
 import { Build, Component, Element, Event, EventEmitter, Listen, Method, Prop, State } from '@stencil/core';
-import { Config, NavOutlet, RouteID, RouteWrite, RouterDirection } from '../../interface';
+import { ComponentName, Config, NavOutlet, RouteID, RouteWrite, RouterDirection } from '../../interface';
 import { TabbarLayout, TabbarPlacement } from '../tabbar/tabbar';
 
 
@@ -126,7 +126,7 @@ export class Tabs implements NavOutlet {
   }
 
   @Method()
-  async setRouteId(id: string): Promise<RouteWrite> {
+  async setRouteId(id: ComponentName): Promise<RouteWrite> {
     const selectedTab = this.getTab(id);
     if (!this.shouldSwitch(selectedTab)) {
       return {changed: false, element: this.selectedTab};

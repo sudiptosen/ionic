@@ -1,8 +1,9 @@
 import { AnimationBuilder, ComponentProps, ComponentRef, FrameworkDelegate } from '../../interface';
 
-export interface PopoverOptions {
-  component: ComponentRef;
-  componentProps?: ComponentProps;
+export interface PopoverOptions<T extends ComponentRef = ComponentRef> {
+  component: T;
+  componentProps: ComponentProps<T>;
+
   showBackdrop?: boolean;
   enableBackdropDismiss?: boolean;
   translucent?: boolean;

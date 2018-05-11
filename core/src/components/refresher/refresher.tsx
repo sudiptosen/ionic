@@ -103,7 +103,7 @@ export class Refresher {
       console.error('ion-refresher is not attached');
       return;
     }
-    this.scrollEl = parentElement.querySelector('ion-scroll') as HTMLElement;
+    this.scrollEl = parentElement.querySelector('ion-scroll');
     if (!this.scrollEl) {
       console.error('ion-refresher didn\'t attached, make sure if parent is a ion-content');
     }
@@ -224,7 +224,6 @@ export class Refresher {
     }
 
     // prevent native scroll events
-    console.log('preventDefault');
     ev.preventDefault();
 
     // the refresher is actively pulling at this point

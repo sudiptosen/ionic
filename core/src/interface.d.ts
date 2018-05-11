@@ -25,9 +25,15 @@ export * from './global/config';
 export * from './index';
 
 export type Mode = 'ios' | 'md';
-export type ComponentRef = Function | HTMLElement | string;
-export type ComponentProps = {[key: string]: any};
+export type ComponentName = keyof HTMLElementTagNameMap;
+export type ComponentRef = Function | HTMLElement | ComponentName;
+export type ComponentProps<T = null> = (T extends ComponentName ? JSX.IntrinsicElements[T] : {[key: string]: any});
 export type CssClassMap = { [className: string]: boolean };
+
+export interface ComponentOptions<T extends ComponentRef> {
+  component: T;
+  componentProps?: ComponentProps<T>
+}
 
 export interface FrameworkDelegate {
   attachViewToDom(container: any, component: any, propsOrDataObj?: any, cssClasses?: string[]): Promise<HTMLElement>;
