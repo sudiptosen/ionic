@@ -80,9 +80,7 @@ export class Tabbar {
     this.highlight && this.updateHighlight();
   }
 
-  @Listen('ionTabButtonDidLoad')
-  @Listen('ionTabButtonDidUnload')
-  onTabButtonLoad() {
+  componentDidLoad() {
     this.scrollable && this.updateBoundaries();
     this.highlight && this.updateHighlight();
   }
@@ -195,9 +193,15 @@ export class Tabbar {
   }
 
   render() {
+    console.log('render tabbar');
+
     const selectedTab = this.selectedTab;
     const ionTabbarHighlight = this.highlight ? <div class="animated tabbar-highlight"/> as HTMLElement : null;
-    const tabButtons = this.tabs.map(tab => <ion-tab-button tab={tab} selected={selectedTab === tab} mode={this.mode} color={this.color}/>);
+    const tabButtons = this.tabs.map(tab => <ion-tab-button
+      tab={tab}
+      selected={selectedTab === tab}
+      mode={this.mode}
+      color={this.color}/>);
 
     if (this.scrollable) {
       return [

@@ -6961,15 +6961,18 @@ declare global {
 
   namespace StencilComponents {
     interface IonTabButton {
+      'badge': string;
+      'badgeColor': string;
       'color': Color;
+      'disabled': string;
+      'href': string;
+      'icon': string;
+      'label': string;
       'mode': Mode;
       /**
        * If true, the tab button will be selected. Defaults to `false`.
        */
       'selected': boolean;
-      /**
-       * The tab component for the button 
-       */
       'tab': HTMLIonTabElement;
     }
   }
@@ -6993,16 +6996,14 @@ declare global {
   }
   namespace JSXElements {
     export interface IonTabButtonAttributes extends HTMLAttributes {
+      'badge'?: string;
+      'badgeColor'?: string;
       'color'?: Color;
+      'disabled'?: string;
+      'href'?: string;
+      'icon'?: string;
+      'label'?: string;
       'mode'?: Mode;
-      /**
-       * Emitted when the tab button is loaded 
-       */
-      'onIonTabButtonDidLoad'?: (event: CustomEvent<void>) => void;
-      /**
-       * Emitted when the tab button is destroyed 
-       */
-      'onIonTabButtonDidUnload'?: (event: CustomEvent<void>) => void;
       /**
        * Emitted when the tab bar is clicked  
        */
@@ -7011,9 +7012,6 @@ declare global {
        * If true, the tab button will be selected. Defaults to `false`.
        */
       'selected'?: boolean;
-      /**
-       * The tab component for the button 
-       */
       'tab'?: HTMLIonTabElement;
     }
   }
@@ -7158,6 +7156,10 @@ declare global {
        * Emitted when the current tab is selected.
        */
       'onIonSelect'?: (event: CustomEvent<void>) => void;
+      /**
+       * Emitted when the tab props mutates. Used internally.
+       */
+      'onIonTabMutated'?: (event: CustomEvent<void>) => void;
       /**
        * If true, the tab will be selected. Defaults to `false`.
        */
