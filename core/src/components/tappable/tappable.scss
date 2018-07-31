@@ -1,0 +1,23 @@
+@import "../../themes/ionic.globals";
+
+:host(.ion-color) {
+  color: #{current-color(base)};
+}
+
+.native-button {
+  @include text-inherit();
+  @include margin(0);
+  @include padding(0);
+
+  display: contents;
+
+  outline: none;
+
+  background: transparent;
+  color: inherit;
+
+  cursor: pointer;
+  touch-action: manipulation;
+
+  appearance: none;
+}

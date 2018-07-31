@@ -24,29 +24,45 @@
       </p>
 
       <p>
-        <ion-anchor href="#">Anchor</ion-anchor>
+        <ion-tappable href="#">Anchor</ion-anchor>
       </p>
 
       <p>
-        <ion-anchor href="#" style="text-decoration: underline">Underline Anchor</ion-anchor>
+        <ion-tappable href="#" style="text-decoration: underline">Underline Anchor</ion-anchor>
       </p>
 
       <p>
-        <ion-anchor href="#" class="custom">Custom Anchor</ion-anchor>
+        <ion-tappable href="#" class="custom">Custom Anchor</ion-anchor>
       </p>
 
       <p>
-        <ion-anchor color="dark" href="#">Dark Anchor</ion-anchor>
+        <ion-tappable color="dark" href="#">Dark Anchor</ion-anchor>
       </p>
 
       <p>
-        <ion-anchor color="danger" href="#">Danger Anchor</ion-anchor>
+        <ion-tappable color="danger" href="#">Danger Anchor</ion-anchor>
       </p>
 
       <p>
-        <ion-anchor id="toggleColor" color="tertiary" href="#">Dynamic Color</ion-anchor>
+        <ion-tappable id="toggleColor" color="tertiary" href="#">Dynamic Color</ion-anchor>
       </p>
 
+      <p>
+        <ion-tappable onclick="console.log('click')">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                Hello
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              This is a clickable card
+            </ion-card-content>
+          </ion-card>
+        </ion-tappable>
+
+        <ion-tappable id="toggleColor" color="tertiary" href="#">Dynamic Color</ion-anchor>
+      </p>
       <ion-button onclick="toggleColor()">Toggle Color</ion-button>
     </ion-content>
 

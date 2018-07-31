@@ -5,7 +5,7 @@ exports.config = {
   bundles: [
     { components: ['ion-action-sheet', 'ion-action-sheet-controller'] },
     { components: ['ion-alert', 'ion-alert-controller'] },
-    { components: ['ion-anchor', 'ion-back-button', 'ion-nav', 'ion-nav-pop', 'ion-nav-push', 'ion-nav-set-root'] },
+    { components: ['ion-tappable', 'ion-back-button', 'ion-nav', 'ion-nav-pop', 'ion-nav-push', 'ion-nav-set-root'] },
     { components: ['ion-animation-controller'] },
     { components: ['ion-app', 'ion-buttons', 'ion-content', 'ion-footer', 'ion-header', 'ion-scroll', 'ion-tap-click', 'ion-title', 'ion-toolbar'] },
     { components: ['ion-avatar', 'ion-badge', 'ion-thumbnail'] },

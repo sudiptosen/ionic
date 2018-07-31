@@ -504,61 +504,6 @@ declare global {
 declare global {
 
   namespace StencilComponents {
-    interface IonAnchor {
-      /**
-       * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
-       */
-      'color': Color;
-      /**
-       * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
-       */
-      'href': string;
-      /**
-       * When using a router, it specifies the transition direction when navigating to another page using `href`.
-       */
-      'routerDirection': RouterDirection;
-    }
-  }
-
-  interface HTMLIonAnchorElement extends StencilComponents.IonAnchor, HTMLStencilElement {}
-
-  var HTMLIonAnchorElement: {
-    prototype: HTMLIonAnchorElement;
-    new (): HTMLIonAnchorElement;
-  };
-  interface HTMLElementTagNameMap {
-    'ion-anchor': HTMLIonAnchorElement;
-  }
-  interface ElementTagNameMap {
-    'ion-anchor': HTMLIonAnchorElement;
-  }
-  namespace JSX {
-    interface IntrinsicElements {
-      'ion-anchor': JSXElements.IonAnchorAttributes;
-    }
-  }
-  namespace JSXElements {
-    export interface IonAnchorAttributes extends HTMLAttributes {
-      /**
-       * The color to use from your application's color palette. Default options are: `"primary"`, `"secondary"`, `"tertiary"`, `"success"`, `"warning"`, `"danger"`, `"light"`, `"medium"`, and `"dark"`. For more information on colors, see [theming](/docs/theming/basics).
-       */
-      'color'?: Color;
-      /**
-       * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
-       */
-      'href'?: string;
-      /**
-       * When using a router, it specifies the transition direction when navigating to another page using `href`.
-       */
-      'routerDirection'?: RouterDirection;
-    }
-  }
-}
-
-
-declare global {
-
-  namespace StencilComponents {
     interface IonAnimationController {
       /**
        * Creates an animation instance
@@ -7481,6 +7426,53 @@ declare global {
   namespace JSXElements {
     export interface IonTapClickAttributes extends HTMLAttributes {
 
+    }
+  }
+}
+
+
+declare global {
+
+  namespace StencilComponents {
+    interface IonTappable {
+      /**
+       * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
+       */
+      'href': string;
+      /**
+       * When using a router, it specifies the transition direction when navigating to another page using `href`.
+       */
+      'routerDirection': RouterDirection;
+    }
+  }
+
+  interface HTMLIonTappableElement extends StencilComponents.IonTappable, HTMLStencilElement {}
+
+  var HTMLIonTappableElement: {
+    prototype: HTMLIonTappableElement;
+    new (): HTMLIonTappableElement;
+  };
+  interface HTMLElementTagNameMap {
+    'ion-tappable': HTMLIonTappableElement;
+  }
+  interface ElementTagNameMap {
+    'ion-tappable': HTMLIonTappableElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'ion-tappable': JSXElements.IonTappableAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface IonTappableAttributes extends HTMLAttributes {
+      /**
+       * Contains a URL or a URL fragment that the hyperlink points to. If this property is set, an anchor tag will be rendered.
+       */
+      'href'?: string;
+      /**
+       * When using a router, it specifies the transition direction when navigating to another page using `href`.
+       */
+      'routerDirection'?: RouterDirection;
     }
   }
 }
