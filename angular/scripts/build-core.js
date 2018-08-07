@@ -3,6 +3,7 @@ const path = require('path');
 const spawn = require('child_process').spawn;
 
 const stencilPath = path.join(__dirname, '..', '..', 'core', 'node_modules', '.bin');
+const typescriptPath = path.join(__dirname, '..', 'node_modules', '.bin');
 
 
 function buildIonicAngular() {
@@ -44,6 +45,36 @@ function copyCSS() {
   fs.copySync(src, dst);
 }
 
+function buildSchematics(){
+  return new Promise((resolve, reject) => {
+    const cmd = 'tsc';
+    const args = [
+      '--project',
+      path.join(__dirname, '..', 'tsconfig.schematics.json'),
+    ];
+
+    const p = spawn(cmd, args, { cwd: typescriptPath, stdio: 'inherit' });
+    p.on('close', (code) => {
+      if (code > 0) {
+        console.log(`ng-add build exited with ${code}`);
+        reject();
+      } else {
+        resolve();
+      }
+    });
+  });
+}
+function copySchematisJson(){
+  const src = path.join(__dirname, '..', 'src', 'schematics', 'collection.json');
+  const dst = path.join(__dirname, '..', 'dist','schematics', 'collection.json');
+
+  fs.removeSync(dst);
+  fs.copySync(src, dst);
+
+}
+
 copyIonicons();
 copyCSS();
 buildIonicAngular();
+buildSchematics();
+copySchematisJson();
