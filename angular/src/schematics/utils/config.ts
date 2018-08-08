@@ -1,4 +1,5 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
+import { experimental, parseJson, JsonParseMode } from '@angular-devkit/core';
 
 const CONFIG_PATH = 'angular.json';
 
@@ -61,4 +62,24 @@ export function addStyle(host: Tree, stylePath: string) {
   } else {
     throw new SchematicsException(`Cannot find valid app`);
   }
+}
+
+export type WorkspaceSchema = experimental.workspace.WorkspaceSchema;
+
+export function getWorkspacePath(host: Tree): string {
+  const possibleFiles = ['/angular.json', '/.angular.json'];
+  const path = possibleFiles.filter(path => host.exists(path))[0];
+
+  return path;
+}
+
+export function getWorkspace(host: Tree): WorkspaceSchema {
+  const path = getWorkspacePath(host);
+  const configBuffer = host.read(path);
+  if (configBuffer === null) {
+    throw new SchematicsException(`Could not find (${path})`);
+  }
+  const content = configBuffer.toString();
+
+  return (parseJson(content, JsonParseMode.Loose) as {}) as WorkspaceSchema;
 }

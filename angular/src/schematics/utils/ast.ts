@@ -1,6 +1,6 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
 import { normalize } from '@angular-devkit/core';
-import ts from 'typescript';
+import * as ts from 'typescript';
 import { addImportToModule } from './devkit-utils/ast-utils';
 import { InsertChange } from './devkit-utils/change';
 
@@ -30,7 +30,6 @@ export function addModuleImportToRootModule(
   moduleName: string,
   importSrc: string
 ) {
-  // TODO(pk): path here is hard-coded
   addModuleImportToModule(
     host,
     normalize(`src/app/app.module.ts`),

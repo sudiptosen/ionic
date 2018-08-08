@@ -64,5 +64,5 @@
     "typescript": "2.9.2",
     "zone.js": "^0.8.26"
   },
-  "schematics": "dist/schematics/collection.json"
+  "schematics": "./dist/schematics/collection.json"
 }
