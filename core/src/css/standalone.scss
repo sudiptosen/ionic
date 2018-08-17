@@ -1,5 +1,20 @@
 @import "../themes/ionic.globals";
 
+// Ionic Font Family
+// --------------------------------------------------
+
+html.ios {
+  --ion-default-font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", sans-serif;
+}
+html.md {
+  --ion-default-font: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+html {
+  --ion-font-family: var(--ion-default-font);
+}
+
+
 // Ionic Colors
 // --------------------------------------------------
 // Generates the color classes and variables based on the
@@ -29,4 +44,45 @@
 
 *::selection {
   background: var(--ion-color-shade, rgba(0,0,0,0.3));
+}
+
+
+// Page Container Structure
+// --------------------------------------------------
+
+.ion-page {
+  @include position(0, 0, 0, 0);
+
+  display: flex;
+  position: absolute;
+
+  flex-direction: column;
+  justify-content: space-between;
+
+  contain: layout size style;
+  overflow: hidden;
+  z-index: $z-index-page-container;
+}
+
+ion-route,
+ion-route-redirect,
+ion-router,
+ion-animation-controller,
+ion-nav-controller,
+ion-menu-controller,
+ion-action-sheet-controller,
+ion-alert-controller,
+ion-loading-controller,
+ion-modal-controller,
+ion-picker-controller,
+ion-popover-controller,
+ion-toast-controller,
+.ion-page-hidden,
+[hidden] {
+  /* stylelint-disable-next-line declaration-no-important */
+  display: none !important;
+}
+
+.ion-page-invisible {
+  opacity: 0;
 }
